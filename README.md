@@ -1,24 +1,35 @@
-# README
+# movies
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+動画配信サービスが充実し、いつでもどこでも映画が見られる時代になりました。
+しかし、見ることのできる映画の数はとても多く、限りあるあ私たちの時間ではその全てを見ることはなかなかできることではありません。
+また、手元にあるたくさんの映画の中から、どれを見るのか決めあぐねた経験はないでしょうか？
+こちらのサイトは、これらの問題を解決するきっかけとなれば良いと思い作成いたしました。
+映画のタイトル、ジャンルによる検索はもちろんレビュー機能により、評価の高い作品を見つけることが可能です。
+また、お気に入りのユーザーを見つけてフォローすれば、いち早くおすすめの作品を知ることができます。
 
-Things you may want to cover:
+### サイトテーマ
+<...>
 
-* Ruby version
+### テーマを選んだ理由
+<...>
 
-* System dependencies
+### ターゲットユーザ
+<...>
 
-* Configuration
+### 主な利用シーン
+<...>
 
-* Database creation
+## 設計書
+<...>
 
-* Database initialization
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1E4Quehglf9PxM1XTE-ft2X5-hJ5dmoJhsI-UJlgzVmY/edit#gid=0>
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
