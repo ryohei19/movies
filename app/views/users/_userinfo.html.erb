@@ -1,0 +1,30 @@
+<div class="row">
+  <h2>プロフィール</h2>
+</div>
+
+<div class="row">
+  <table class="table table-borderless table-hover">
+    <tr class="brown-border">
+      <td>ユーザーネーム</td>
+      <td><%= @user.name %></td>
+    </tr>
+
+    <tr class="brown-border">
+      <td>自己紹介</td>
+      <td><%= @user.introduction %></td>
+    </tr>
+
+    <tr class="brown-border">
+      <td>お気に入りの映画</td>
+      <td><%= @user.favorite_movie %></td>
+    </tr>
+  </table>
+</div>
+
+<div class="text-right">
+  <%= link_to "プロフィールを編集", edit_user_path(@user.id), class: "btn  btn-success my-1" %>
+</div>
+
+<div class="text-right">
+  <%= link_to "映画レビューの投稿", new_movie_path, class: "btn  btn-success my-1" %>
+</div>
