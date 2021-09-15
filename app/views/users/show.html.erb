@@ -1,17 +1,41 @@
-<h2>プロフィール</h2>
-<table class="table table-borderless table-hover">
-  <tr class="brown-border">
-    <td>ユーザーネーム</td>
-    <td><%= @user.name %></td>
-  </tr>
+<div class="container my-5">
+  <div class="row">
+    <div class="offset-sm-1">
+      <h2 class="red-border px-3 pb-1">マイページ</h2>
+    </div>
+  </div>
 
-  <tr class="brown-border">
-    <td>自己紹介</td>
-    <td><%= @user.introduction %></td>
-  </tr>
+  <div class="row my-3">
+		<div class="offset-sm-3">
+		  <strong class="red-border px-3 pb-1">登録情報</strong>
+		</div>
+	</div>
 
-  <tr class="brown-border">
-    <td>お気に入りの映画</td>
-    <td><%= @user.favorite_movie %></td>
-  </tr>
-</table>
+	<div class="row">
+	  <div class="offset-sm-4 col-sm-4">
+	    <table class="table table-borderless table-hover">
+        <tr class="brown-border">
+          <td>ユーザーネーム</td>
+          <td><%= @user.name %></td>
+        </tr>
+
+        <tr class="brown-border">
+          <td>自己紹介</td>
+          <td><%= @user.introduction %></td>
+        </tr>
+
+        <tr class="brown-border">
+          <td>お気に入りの映画</td>
+          <td><%= @user.favorite_movie %></td>
+        </tr>
+      </table>
+	  </div>
+	</div>
+
+	<div class="row">
+	  <%= link_to "プロフィールを編集", edit_user_path(@user.id), class: "btn  btn-success my-1" %>
+	</div>
+</div>
+
+
+
