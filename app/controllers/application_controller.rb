@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_genres_path
     when User
-      user_path(resource)
+      user_path(resource.id)
     end
   end
 end
