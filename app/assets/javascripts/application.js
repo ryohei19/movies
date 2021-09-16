@@ -18,3 +18,6 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// 追加
+require ('javascripts/jquery_raty')
