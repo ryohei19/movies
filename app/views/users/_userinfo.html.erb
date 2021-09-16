@@ -18,6 +18,14 @@
       <td>お気に入りの映画</td>
       <td><%= user.favorite_movie %></td>
     </tr>
+
+    <tr class="brown-border">
+      <td><%= link_to user.followings.count, user_followings_path(user.id) %>フォロー</td>
+
+      <td><%= link_to user.followers.count, user_followers_path(user.id) %>フォロワー</td>
+
+    </tr>
+
   </table>
 </div>
 

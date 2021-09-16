@@ -1,0 +1,36 @@
+<h2>Follower Users</h2>
+<% if @users.exists? %>
+<table class = "table">
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td></td>
+        <td><%= user.name %></td>
+        <td><%= user.introduction %></td>
+        <td>
+          <% unless user.id == current_user.id %>
+            <div class="text-right">
+              <% if current_user.following?(user) %>
+                <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, class:"btn btn-secondary my-1" %>
+              <% else %>
+                <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class:"btn btn-outline-secondary my-1" %>
+              <% end %>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>
