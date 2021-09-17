@@ -48,4 +48,11 @@
     </tr>
 
   </table>
+
+  <h5>いいね件数: <%= movie.goods.count %></h5>
+    <% if current_user.already_good?(movie) %>
+      <%= button_to '★', movie_good_path(movie), method: :delete %>
+    <% else %>
+      <%= button_to '☆', movie_goods_path(movie) %>
+    <% end %>
 </div>

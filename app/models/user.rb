@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   has_many :movies, dependent: :destroy
 
+  has_many :goods, dependent: :destroy
+  has_many :good_movies, through: :goods, source: :movie
+
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
@@ -22,6 +25,10 @@ class User < ApplicationRecord
 
   def following?(user)
     followings.include?(user)
+  end
+
+  def already_good?(movie)
+    self.goods.exists?(movie_id: movie.id)
   end
 
 end

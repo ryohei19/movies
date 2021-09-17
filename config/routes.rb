@@ -23,7 +23,9 @@ devise_for :users, controllers: {
     get 'followers' => 'relationships#followers', as: 'followers'
   end
 
-  resources :movies
+  resources :movies do
+    resources :goods, only: [:create, :destroy]
+  end
 
   root 'homes#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

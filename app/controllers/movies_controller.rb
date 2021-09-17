@@ -17,6 +17,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @user = @movie.user
     @movies = @user.movies
+    @good = Good.new
   end
 
 
