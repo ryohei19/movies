@@ -13,6 +13,13 @@ class MoviesController < ApplicationController
   def index
   end
 
+  def show
+    @movie = Movie.find(params[:id])
+    @user = @movie.user
+    @movies = @user.movies
+  end
+
+
   private
   def movie_params
   	  params.require(:movie).permit(:name, :rate, :review, :spoiler, :genre_id)

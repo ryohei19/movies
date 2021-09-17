@@ -1,19 +1,17 @@
 <div class="container my-5">
   <div class="row">
+
     <div class="col-md-4">
     </div>
 
     <div class="col-md-4">
       <%= render 'users/userinfo', user: @user %>
-      <%= render 'movies/movieindex', movies: @movies %>
+      <%= render 'movies/movie_index', movies: @movies %>
     </div>
 
     <div class="col-md-4">
-
+      <%= render 'movies/movie_show', movie: @movie %>
     </div>
 
   </div>
 </div>
-
-
-

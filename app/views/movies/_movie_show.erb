@@ -1,0 +1,51 @@
+<div class="row">
+  <table class="table table-borderless table-hover">
+    <tr class="brown-border">
+      <td>作品名</td>
+      <td><%= movie.name %></td>
+    </tr>
+
+    <tr class="brown-border">
+      <td>ジャンル</td>
+      <td><%= movie.genre.name %></td>
+    </tr>
+
+
+    <tr class="brown-border">
+      <td></td>
+      <td>
+        <div id="star"></div>
+          <script>
+          $('#star').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= movie.rate %>,
+          });
+          </script>
+      </td>
+    </tr>
+
+    <tr class="brown-border">
+      <td>レビュー</td>
+      <td><%= movie.review %></td>
+    </tr>
+
+    <tr class="brown-border">
+      <td>レビュー（ネタバレ含む）</td>
+        <td>
+          <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            表示
+          </button>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+            <%= movie.spoiler %>
+          </div>
+        </td>
+    </tr>
+
+  </table>
+</div>
