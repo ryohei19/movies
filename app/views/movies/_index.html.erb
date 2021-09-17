@@ -4,9 +4,13 @@
         <% followings.each do |movie| %>
       <tr>
         <td>
-          <%= movie.user.name %>
+          <%= link_to user_path(movie.user.id) do %>
+            <%= movie.user.name %>
+          <% end %>
 
-          <%= movie.name %>
+          <%= link_to movie_path(movie.id) do %>
+            <%= movie.name %>
+          <% end %>
 
           <%= movie.genre.name %>
 
