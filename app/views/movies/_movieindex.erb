@@ -1,0 +1,33 @@
+      <table class="table table-borderless table-hover mt-5">
+        <thead>
+          <th>作品名</th>
+          <th>評価</th>
+          <th></th>
+        </thead>
+        <tbody>
+            <% movies.each do |movie| %>
+          <tr>
+            <td>
+              <%= movie.name %>
+            </td>
+            <td>
+              <div id="star-rate-<%= movie.id %>"></div>
+                <script>
+                $('#star-rate-<%= movie.id %>').raty({
+                  size: 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= movie.rate %>,
+                });
+                </script>
+            </td>
+            <td>
+              <%= link_to "→", movie_path(movie.id) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
