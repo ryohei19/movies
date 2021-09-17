@@ -1,0 +1,42 @@
+<div class="row offset-sm-1">
+  <table class="table table-borderless table-hover mt-5">
+    <tbody>
+        <% followings.each do |movie| %>
+      <tr>
+        <td>
+          <%= movie.user.name %>
+
+          <%= movie.name %>
+
+          <%= movie.genre.name %>
+
+          <div class="col-md-10", id="star-rate-<%= movie.id %>"></div>
+            <script>
+            $('#star-rate-<%= movie.id %>').raty({
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= movie.rate %>,
+            });
+            </script>
+
+          <%= movie.review %></br>
+
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            以下ネタバレ含む
+          </button>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              <%= movie.spoiler %>
+            </div>
+          </div>
+
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
