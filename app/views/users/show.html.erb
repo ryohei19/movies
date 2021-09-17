@@ -1,16 +1,50 @@
 <div class="container my-5">
-      <div class="row">
-        <div class="col-md-4">
-        </div>
-
-        <div class="col-md-4">
-          <%= render 'users/userinfo', user: @user %>
-        </div>
-
-        <div class="col-md-4">
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-md-4">
     </div>
+
+    <div class="col-md-4">
+      <%= render 'users/userinfo', user: @user %>
+    </div>
+
+    <div class="col-md-4">
+      <table>
+        <thead>
+          <th>作品名</th>
+          <th>評価</th>
+          <th></th>
+        </thead>
+        <tbody>
+            <% @movies.each do |movie| %>
+          <tr>
+            <td>
+              <%= movie.name %>
+            </td>
+            <td>
+              <div id="star-rate-<%= movie.id %>"></div>
+                <script>
+                $('#star-rate-<%= movie.id %>').raty({
+                  size: 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= movie.rate %>,
+                });
+                </script>
+            </td>
+            <td>
+              <%= movie.spoiler %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
 
 
 

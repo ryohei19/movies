@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_17_094138) do
+ActiveRecord::Schema.define(version: 2021_09_17_155608) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -31,14 +31,14 @@ ActiveRecord::Schema.define(version: 2021_09_17_094138) do
   end
 
   create_table "movies", force: :cascade do |t|
-    t.text "review"
-    t.text "spoiler"
-    t.integer "user_id"
-    t.integer "genre_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "name"
     t.float "rate"
+    t.text "review"
+    t.text "spoiler"
+    t.integer "genre_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|

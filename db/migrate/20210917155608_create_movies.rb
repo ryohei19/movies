@@ -1,11 +1,12 @@
 class CreateMovies < ActiveRecord::Migration[5.2]
   def change
     create_table :movies do |t|
-      t.float :star
+      t.string :name
+      t.float :rate
       t.text :review
       t.text :spoiler
-      t.integer :user_id
       t.integer :genre_id
+      t.integer :user_id
 
       t.timestamps
     end

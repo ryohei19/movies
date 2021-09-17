@@ -5,12 +5,16 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
+    @movie.user_id = current_user.id
     @movie.save
-    redirect_to user_path(current_user.id)
+    redirect_to user_path(current_user)
+  end
+
+  def index
   end
 
   private
   def movie_params
-  	  params.require(:movie).permit(:name, :star, :review, :spoiler, :user_id, :genre_id)
+  	  params.require(:movie).permit(:name, :rate, :review, :spoiler, :genre_id)
   end
 end
