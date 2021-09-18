@@ -27,16 +27,19 @@
             });
             </script>
 
-          <%= movie.review %></br>
+          <%= movie.review %>
 
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            以下ネタバレ含む
-          </button>
-          <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-              <%= movie.spoiler %>
+            <div class="col text-right mt-2">
+              <p>
+                <% if current_user.already_good?(movie) %>
+                  <%= link_to "", movie_good_path(movie), method: :delete, class:"fas fa-star" %>
+                <% else %>
+                  <%= link_to "", movie_goods_path(movie), method: :post, class:"far fa-star" %>
+                <% end %>
+                <%= movie.goods.count %>
+                人がいいね
+              </p>
             </div>
-          </div>
 
         </td>
       </tr>

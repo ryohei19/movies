@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @movies = @user.movies
     @followings = Movie.where(user_id: [*current_user.following_ids])
     @genres = Genre.all
+    @good = Good.new
   end
 
   def edit
