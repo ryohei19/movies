@@ -23,18 +23,17 @@
       <td><%= link_to user.followings.count, user_followings_path(user.id) %>フォロー</td>
 
       <td><%= link_to user.followers.count, user_followers_path(user.id) %>フォロワー</td>
-
     </tr>
 
   </table>
 </div>
 
 <% if user.id == current_user.id %>
-  <div class="text-right">
+  <div class="text-center">
     <%= link_to "プロフィールを編集", edit_user_path(user.id), class: "btn  btn-success my-1" %>
   </div>
 <% else %>
-  <div class="text-right">
+  <div class="text-center">
     <% if current_user.following?(user) %>
       <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, class:"btn btn-secondary my-1" %>
     <% else %>
@@ -44,7 +43,7 @@
 <% end %>
 
 <% if user.id == current_user.id %>
-  <div class="text-right">
+  <div class="text-center">
     <%= link_to "映画レビューの投稿", new_movie_path, class: "btn  btn-success my-1" %>
   </div>
 <% end %>
@@ -59,7 +58,7 @@
       <% movies.each do |movie| %>
     <tr>
       <td>
-        <%= movie.name %>
+        <%= link_to movie.name, movie_path(movie.id) %>
       </td>
       <td>
         <div id="star-rate-<%= movie.id %>"></div>
@@ -74,9 +73,6 @@
             score: <%= movie.rate %>,
           });
           </script>
-      </td>
-      <td>
-        <%= link_to "→", movie_path(movie.id) %>
       </td>
     </tr>
     <% end %>
