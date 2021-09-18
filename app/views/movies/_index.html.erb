@@ -4,13 +4,15 @@
       <% followings.each do |movie| %>
         <tr onclick='window.location="<%= '/movies/' + movie.id.to_s %>"' role="link">
           <td>
+            <%= attachment_image_tag movie.user, :profile_image, size: "50x50", format: 'jpeg',fallback: "no_image.png", class:"image text-left" %>
+
             <%= movie.user.name %>
 
             <%= movie.name %>
 
             <%= movie.genre.name %>
 
-            <div class="col-md-10", id="star-rate-<%= movie.id %>"></div>
+            <div class="col-md-10 mt-1", id="star-rate-<%= movie.id %>"></div>
               <script>
               $('#star-rate-<%= movie.id %>').raty({
                 size: 36,

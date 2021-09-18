@@ -28,7 +28,7 @@ body {
 }
 
 .underline {
-  
+
 }
 
 .spoiler {
@@ -46,4 +46,9 @@ body {
 
 .link:hover {
   color: yellow;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 50%;
 }

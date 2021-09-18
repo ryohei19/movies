@@ -1,11 +1,8 @@
 <div class="row">
-  <h2>プロフィール</h2>
-</div>
-
-<div class="row">
   <table class="table table-borderless">
+
     <tr class="brown-border">
-      <td>ユーザーネーム</td>
+      <td><%= attachment_image_tag user, :profile_image, size: "100x100", format: 'jpeg',fallback: "no_image.png", class:"image" %></td>
       <td><%= user.name %></td>
     </tr>
 

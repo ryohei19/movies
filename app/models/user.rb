@@ -4,11 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  attachment :profile_image
+
   has_many :movies, dependent: :destroy
 
+#--good機能--
   has_many :goods, dependent: :destroy
   has_many :good_movies, through: :goods, source: :movie
 
+#--フォロー・フォロワー機能--
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
