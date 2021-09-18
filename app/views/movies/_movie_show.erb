@@ -33,26 +33,35 @@
       <td>レビュー</td>
       <td><%= movie.review %></td>
     </tr>
-
-    <tr class="brown-border">
-      <td></td>
-        <td>
-          <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            以下ネタバレ含む
-          </button>
-          <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-            <%= movie.spoiler %>
-          </div>
-        </td>
-    </tr>
-
   </table>
 
-  <h5>いいね件数: <%= movie.goods.count %></h5>
+  <div class="accordion col-md-12" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            以下ネタバレ含む
+          </button>
+        </h5>
+      </div>
+
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <%= movie.spoiler %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-9 text-right mt-2">
+    <p>いいね件数: <%= movie.goods.count %></p>
+  </div>
+
+  <div class="col text-left mt-2">
     <% if current_user.already_good?(movie) %>
       <%= button_to '★', movie_good_path(movie), method: :delete %>
     <% else %>
       <%= button_to '☆', movie_goods_path(movie) %>
     <% end %>
+  </div>
 </div>
