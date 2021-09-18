@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @movies = @user.movies
     @followings = Movie.where(user_id: [*current_user.following_ids])
+    @genres = Genre.all
   end
 
   def edit

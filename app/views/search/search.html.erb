@@ -1,0 +1,6 @@
+<% if @datas.empty? %>
+  <h2>該当する映画はありません</h2>
+<% end %>
+  <% @datas.each do |data| %>
+    <%=  data.name %>
+  <% end %>
