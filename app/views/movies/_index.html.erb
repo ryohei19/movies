@@ -1,48 +1,43 @@
 <div class="row">
-  <table class="table table-borderless table-hover mt-5">
+  <table class="table table-borderless mt-5">
     <tbody>
-        <% followings.each do |movie| %>
-      <tr>
-        <td>
-          <%= link_to user_path(movie.user.id) do %>
+      <% followings.each do |movie| %>
+        <tr onclick='window.location="<%= '/movies/' + movie.id.to_s %>"' role="link">
+          <td>
             <%= movie.user.name %>
-          <% end %>
 
-          <%= link_to movie_path(movie.id) do %>
             <%= movie.name %>
-          <% end %>
 
-          <%= movie.genre.name %>
+            <%= movie.genre.name %>
 
-          <div class="col-md-10", id="star-rate-<%= movie.id %>"></div>
-            <script>
-            $('#star-rate-<%= movie.id %>').raty({
-              size: 36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              half: true,
-              readOnly: true,
-              score: <%= movie.rate %>,
-            });
-            </script>
+            <div class="col-md-10", id="star-rate-<%= movie.id %>"></div>
+              <script>
+              $('#star-rate-<%= movie.id %>').raty({
+                size: 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                readOnly: true,
+                score: <%= movie.rate %>,
+              });
+              </script>
 
-          <%= movie.review %>
+            <%= movie.review %>
 
             <div class="col text-right mt-2">
               <p>
                 <% if current_user.already_good?(movie) %>
-                  <%= link_to "", movie_good_path(movie), method: :delete, class:"fas fa-star" %>
+                  <%= link_to "", movie_good_path(movie), method: :delete, class:"link fas fa-thumbs-up" %>
                 <% else %>
-                  <%= link_to "", movie_goods_path(movie), method: :post, class:"far fa-star" %>
+                  <%= link_to "", movie_goods_path(movie), method: :post, class:"link far fa-thumbs-up" %>
                 <% end %>
                 <%= movie.goods.count %>
                 人がいいね
               </p>
             </div>
-
-        </td>
-      </tr>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>

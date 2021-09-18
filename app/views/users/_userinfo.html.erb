@@ -3,7 +3,7 @@
 </div>
 
 <div class="row">
-  <table class="table table-borderless table-hover">
+  <table class="table table-borderless">
     <tr class="brown-border">
       <td>ユーザーネーム</td>
       <td><%= user.name %></td>
@@ -20,9 +20,9 @@
     </tr>
 
     <tr class="brown-border">
-      <td><%= link_to user.followings.count, user_followings_path(user.id) %>フォロー</td>
+      <td><%= link_to user.followings.count, user_followings_path(user.id), class:"link" %>フォロー</td>
 
-      <td><%= link_to user.followers.count, user_followers_path(user.id) %>フォロワー</td>
+      <td><%= link_to user.followers.count, user_followers_path(user.id), class:"link" %>フォロワー</td>
     </tr>
 
   </table>
@@ -30,35 +30,36 @@
 
 <% if user.id == current_user.id %>
   <div class="text-center">
-    <%= link_to "プロフィールを編集", edit_user_path(user.id), class: "btn  btn-success my-1" %>
+    <%= link_to "プロフィールを編集", edit_user_path(user.id), class: "btn  btn-light my-1" %>
   </div>
 <% else %>
   <div class="text-center">
     <% if current_user.following?(user) %>
-      <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, class:"btn btn-secondary my-1" %>
+      <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, class:" btn btn-light my-1" %>
     <% else %>
-      <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class:"btn btn-outline-secondary my-1" %>
+      <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class:"btn btn-outline-light my-1" %>
     <% end %>
   </div>
 <% end %>
 
 <% if user.id == current_user.id %>
   <div class="text-center">
-    <%= link_to "映画レビューの投稿", new_movie_path, class: "btn  btn-success my-1" %>
+    <%= link_to "映画レビューの投稿", new_movie_path, class: "btn  btn-light my-1" %>
   </div>
 <% end %>
 
-<table class="table table-borderless table-hover mt-5">
+<table class="table table-borderd table-hover mt-5">
   <thead>
-    <th>作品名</th>
-    <th>評価</th>
-    <th></th>
+    <tr class="underline">
+      <th>投稿</th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
       <% movies.each do |movie| %>
     <tr>
       <td>
-        <%= link_to movie.name, movie_path(movie.id) %>
+        <%= link_to movie.name, movie_path(movie.id), class:"link" %>
       </td>
       <td>
         <div id="star-rate-<%= movie.id %>"></div>

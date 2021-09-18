@@ -1,5 +1,5 @@
 <div class="row">
-  <table class="table table-borderless table-hover">
+  <table class="table table-borderless">
     <tr class="brown-border">
       <td>作品名</td>
       <td><%= movie.name %></td>
@@ -39,13 +39,13 @@
     <div class="card">
       <div class="card-header" id="headingOne">
         <h5 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <button class="spoiler btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
             以下ネタバレ含む
           </button>
         </h5>
       </div>
 
-      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
         <div class="card-body">
           <%= movie.spoiler %>
         </div>
@@ -56,9 +56,9 @@
   <div class="col text-right mt-2">
     <p>
       <% if current_user.already_good?(movie) %>
-        <%= link_to "", movie_good_path(movie), method: :delete, class:"fas fa-star" %>
+        <%= link_to "", movie_good_path(movie), method: :delete, class:"link fas fa-thumbs-up" %>
       <% else %>
-        <%= link_to "", movie_goods_path(movie), method: :post, class:"far fa-star" %>
+        <%= link_to "", movie_goods_path(movie), method: :post, class:"link far fa-thumbs-up" %>
       <% end %>
       <%= movie.goods.count %>
       人がいいね

@@ -16,3 +16,34 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+body {
+  color: white;
+  background-color: black;
+
+}
+
+.table {
+  color: white;
+}
+
+.underline {
+  
+}
+
+.spoiler {
+  color: black;
+  background: white;
+}
+
+.card {
+  background: black;
+}
+
+.link {
+  color: white;
+}
+
+.link:hover {
+  color: yellow;
+}
