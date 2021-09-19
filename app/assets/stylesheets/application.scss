@@ -20,7 +20,9 @@
 body {
   color: white;
   background-color: black;
-
+}
+a:hover {
+  text-decoration: none;
 }
 
 .table {
@@ -38,6 +40,10 @@ body {
 
 .card {
   background: black;
+}
+
+.card:hover {
+  border-color: white;
 }
 
 .link {

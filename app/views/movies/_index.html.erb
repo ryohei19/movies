@@ -1,18 +1,18 @@
 <div class="row">
-  <table class="table table-borderless mt-5">
-    <tbody>
-      <% followings.each do |movie| %>
-        <tr onclick='window.location="<%= '/movies/' + movie.id.to_s %>"' role="link">
-          <td>
+  <% followings.each do |movie| %>
+    <div class="card" style="width: 100rem;">
+      <a href="/movies/<%= movie.id %>" class="card-body text-white">
+        <div class="row">
+          <div class="col-sm-2">
             <%= attachment_image_tag movie.user, :profile_image, size: "50x50", format: 'jpeg',fallback: "no_image.png", class:"image text-left" %>
+          </div>
 
-            <%= movie.user.name %>
+          <div class="col-sm-10">
+            <%= movie.user.name %>さん</br>
 
-            <%= movie.name %>
+            <%= movie.name %>の評価
 
-            <%= movie.genre.name %>
-
-            <div class="col-md-10 mt-1", id="star-rate-<%= movie.id %>"></div>
+            <div class="mt-1", id="star-rate-<%= movie.id %>"></div>
               <script>
               $('#star-rate-<%= movie.id %>').raty({
                 size: 36,
@@ -26,21 +26,23 @@
               </script>
 
             <%= movie.review %>
+          </div>
+        </div>
 
-            <div class="col text-right mt-2">
-              <p>
-                <% if current_user.already_good?(movie) %>
-                  <%= link_to "", movie_good_path(movie), method: :delete, class:"link fas fa-thumbs-up" %>
-                <% else %>
-                  <%= link_to "", movie_goods_path(movie), method: :post, class:"link far fa-thumbs-up" %>
-                <% end %>
-                <%= movie.goods.count %>
-                人がいいね
-              </p>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <div class="col text-right mt-2">
+          <%= movie.updated_at.strftime('%Y/%m/%d') %>
+        </div>
+
+        <p class="col text-right border-top border-dark">
+          <% if current_user.already_good?(movie) %>
+            <%= link_to "", movie_good_path(movie), method: :delete, class:"link fas fa-thumbs-up" %>
+          <% else %>
+            <%= link_to "", movie_goods_path(movie), method: :post, class:"link far fa-thumbs-up" %>
+          <% end %>
+          <%= movie.goods.count %>
+          人がいいね
+        </p>
+      </a>
+    </div>
+  <% end %>
 </div>
