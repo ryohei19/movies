@@ -28,6 +28,8 @@ devise_for :users, controllers: {
     resources :goods, only: [:create, :destroy]
   end
 
+  resources :notifications, only: :index
+
   root 'homes#top'
   get 'search', to: 'search#search'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,0 +1,13 @@
+<% visitor = notification.visitor %>
+
+<div class="notification-view clearfix border-bottom border-dark pt-2 pb-3">
+  <%= link_to user_path(notification.visitor) do %>
+    <%= attachment_image_tag visitor, :profile_image, size: "50x50", format: 'jpeg',fallback: "no_image.png", class:"image mr-3 text-left" %>
+  <% end %>
+  <%= notification_form(notification) %>
+
+  <span class="moderate-font ml-3">
+    <%= "#{time_ago_in_words(notification.created_at)}" %>
+  </span>
+</div>
+

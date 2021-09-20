@@ -1,6 +1,8 @@
 class GoodsController < ApplicationController
   def create
     @good = current_user.goods.create(movie_id: params[:movie_id])
+    @movie = Movie.find(params[:movie_id])
+    @movie.create_notification_good!(current_user) #通知
     redirect_back(fallback_location: root_path)
   end
 

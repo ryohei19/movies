@@ -1,0 +1,27 @@
+<div class="container my-5">
+  <div class="row justify-content-between">
+    <div class="col-md-4">
+      <%= render 'users/userinfo', user: @user, movies: @movies %>
+    </div>
+
+    <div class="col-md-6">
+      <h3 class="text-left mb-3">通知</h3>
+      <% if @notifications.present? %>
+          <div class="users-index">
+                <%= render @notifications %>
+          </div>
+      <% else %>
+          <p>通知はありません</p>
+      <% end %>
+    </div>
+
+    <div class="col-md-2">
+      <%= render 'search/search', genres: @genres %>
+    </div>
+
+  </div>
+</div>
+
+
+
+
