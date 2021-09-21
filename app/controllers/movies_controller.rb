@@ -18,6 +18,7 @@ class MoviesController < ApplicationController
     @user = @movie.user
     @movies = @user.movies
     @good = Good.new
+    @genres = Genre.all
   end
 
 

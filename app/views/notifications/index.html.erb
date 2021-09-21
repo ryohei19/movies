@@ -5,13 +5,24 @@
     </div>
 
     <div class="col-md-6">
-      <h3 class="text-left mb-3">通知</h3>
+      <div class="row">
+        <div class="col-1 mt-1">
+          <%= link_to "", :back, class:"fas fa-arrow-left" %>
+        </div>
+
+        <div class="col-11">
+          <h3>
+            通知
+          </h3>
+        </div>
+      </div>
+
       <% if @notifications.present? %>
-          <div class="users-index">
-                <%= render @notifications %>
-          </div>
+        <div class="users-index">
+          <%= render @notifications %>
+        </div>
       <% else %>
-          <p>通知はありません</p>
+        <p>通知はありません</p>
       <% end %>
     </div>
 

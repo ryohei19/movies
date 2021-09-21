@@ -34,7 +34,7 @@
     <%= link_to "映画レビューの投稿", new_movie_path, class: "btn  btn-light my-1" %>
   </div>
 <% else %>
-  <div class="text-center">
+  <div class="text-right">
     <% if current_user.following?(user) %>
       <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, class:" btn btn-light my-1" %>
     <% else %>
@@ -42,3 +42,7 @@
     <% end %>
   </div>
 <% end %>
+
+<div class="text-right">
+  <%= link_to "投稿一覧", user_path(user.id), class: "btn  btn-light my-1" %>
+</div>

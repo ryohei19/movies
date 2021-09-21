@@ -5,11 +5,12 @@
       <%= render 'users/userinfo', user: @user, movies: @movies %>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-6">
       <%= render 'movies/movie_show', movie: @movie, good: @good %>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-2">
+      <%= render 'search/search', genres: @genres %>
     </div>
 
   </div>
