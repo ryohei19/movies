@@ -1,68 +1,59 @@
 <div class="row">
-  <table class="table table-borderless">
-    <tr class="brown-border">
-      <td>作品名</td>
-      <td><%= movie.name %></td>
-    </tr>
 
-    <tr class="brown-border">
-      <td>ジャンル</td>
-      <td><%= movie.genre.name %></td>
-    </tr>
-
-
-    <tr class="brown-border">
-      <td></td>
-      <td>
-        <div id="star"></div>
-          <script>
-          $('#star').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= movie.rate %>,
-          });
-          </script>
-      </td>
-    </tr>
-
-    <tr class="brown-border">
-      <td>レビュー</td>
-      <td><%= movie.review %></td>
-    </tr>
-  </table>
-
-  <div class="accordion col-md-12" id="accordionExample">
-    <div class="card">
-      <div class="card-header" id="headingOne">
-        <h5 class="mb-0">
-          <button class="spoiler btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-            以下ネタバレ含む
-          </button>
-        </h5>
-      </div>
-
-      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-        <div class="card-body">
-          <%= movie.spoiler %>
-        </div>
-      </div>
-    </div>
+  <div class="col-md-12">
+    <%= movie.name %>の評価
   </div>
 
-  <div class="col text-right mt-2">
-    <p>
-      <% if current_user.already_good?(movie) %>
-        <%= link_to "", movie_good_path(movie), method: :delete, class:"link fas fa-thumbs-up" %>
-      <% else %>
-        <%= link_to "", movie_goods_path(movie), method: :post, class:"link far fa-thumbs-up" %>
-      <% end %>
-      <%= movie.goods.count %>
-      人がいいね
-    </p>
+
+        <div class="col">
+
+
+          <div class="mt-1", id="star-rate2-<%= movie.id %>"></div>
+            <script>
+            $('#star-rate2-<%= movie.id %>').raty({
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= movie.rate %>,
+            });
+            </script>
+
+          <%= movie.review %>
+
+          <div class="accordion col-md-12" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="spoiler btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    以下ネタバレ含む
+                  </button>
+                </h5>
+              </div>
+
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  <%= movie.spoiler %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      <div class="col text-right mt-2">
+        <%= movie.updated_at.strftime('%Y/%m/%d') %>
+      </div>
+
+      <p class="col text-right border-top border-dark">
+        <% if current_user.already_good?(movie) %>
+          <%= link_to "", movie_good_path(movie), method: :delete, class:"link fas fa-thumbs-up" %>
+        <% else %>
+          <%= link_to "", movie_goods_path(movie), method: :post, class:"link far fa-thumbs-up" %>
+        <% end %>
+        <%= movie.goods.count %>
+        人がいいね
+      </p>
   </div>
 </div>
 

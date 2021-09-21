@@ -29,6 +29,10 @@
   <div class="text-center">
     <%= link_to "プロフィールを編集", edit_user_path(user.id), class: "btn  btn-light my-1" %>
   </div>
+
+  <div class="text-center">
+    <%= link_to "映画レビューの投稿", new_movie_path, class: "btn  btn-light my-1" %>
+  </div>
 <% else %>
   <div class="text-center">
     <% if current_user.following?(user) %>
@@ -38,48 +42,3 @@
     <% end %>
   </div>
 <% end %>
-
-<% if user.id == current_user.id %>
-  <div class="text-center">
-    <%= link_to "映画レビューの投稿", new_movie_path, class: "btn  btn-light my-1" %>
-  </div>
-
-  <div class="text-center">
-    <%= link_to "通知", notifications_path, class: "btn  btn-light my-1" %>
-  </div>
-
-<% end %>
-
-<table class="table table-borderd table-hover mt-5">
-  <thead>
-    <tr class="underline">
-      <th>投稿</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-      <% movies.each do |movie| %>
-    <tr>
-      <td>
-        <%= link_to movie.name, movie_path(movie.id), class:"link" %>
-      </td>
-      <td>
-        <div id="star-rate-<%= movie.id %>"></div>
-          <script>
-          $('#star-rate-<%= movie.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= movie.rate %>,
-          });
-          </script>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
