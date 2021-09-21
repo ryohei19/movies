@@ -19,7 +19,15 @@
 
 body {
   color: white;
-  background-color: black;
+  background-color: #008080;
+}
+
+header {
+  border-color: white;
+}
+
+a {
+  color:white;
 }
 a:hover {
   text-decoration: none;
@@ -29,17 +37,13 @@ a:hover {
   color: white;
 }
 
-.underline {
-
-}
-
 .spoiler {
   color: black;
   background: white;
 }
 
 .card {
-  background: black;
+  background: #008080;
 }
 
 .card:hover {

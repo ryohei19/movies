@@ -1,18 +1,18 @@
 <% if request.fullpath.include? "admin"  %>
-  <nav class="navbar navbar-expand navbar-dark bg-dark" >
+  <nav class="navbar navbar-expand-lg" >
     <div class="container">
-    
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
         <li class="navbar-toggler-icon"></li>
       </button>
-    
+
       <%= link_to "Movies", admin_genres_path, class: "navbar-brand" %>
       <ul class="navbar-nav ml-auto">
         <% if admin_signed_in? %>
           <li class="nav-item">
             <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link" %>
           </li>
-      
+
           <li class="nav-item">
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
           </li>
@@ -20,41 +20,45 @@
       </ul>
     </div>
   </nav>
-    
+
 <% else %>
-    
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
       <%= link_to "Movies", root_path, class:"navbar-brand" %>
-    
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
         <li class="navbar-toggler-icon"></li>
       </button>
-    
+
       <div class="navbar-collapse collapse show" id="navbarNavDropdown">
         <ul class = "navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "マイページ", user_path(current_user.id), class:"fas nav-link text-light" %>
+              <%= link_to "", user_path(current_user.id), class:" far fa-user nav-link text-light" %>
             </li>
-    
+
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"fas nav-link text-light" %>
+              <%= link_to "", notifications_path(current_user.id), class:" far fa-bell nav-link text-light" %>
             </li>
-    
+
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link text-light" %>
+            </li>
+
           <% else %>
             <li class="nav-item">
              <%= link_to "トップ",root_path, class:"fas nav-link text-light" %>
             </li>
-    
+
             <li class="nav-item">
-              <%= link_to "アカウント作成", new_user_registration_path, class:"fas nav-link text-light" %>
+              <%= link_to "アカウント作成", new_user_registration_path, class:"nav-link text-light" %>
             </li>
-    
+
             <li class="nav-item">
-              <%= link_to "ログイン", new_user_session_path, class:"fas nav-link text-light" %>
+              <%= link_to "ログイン", new_user_session_path, class:"nav-link text-light" %>
             </li>
-    
+
           <% end %>
         </ul>
       </div>
