@@ -5,13 +5,8 @@
     </div>
 
     <div class="col-md-6">
-　　　<% if @user.id == current_user.id %>
-　　　  <h3>タイムライン</h3>
-        <%= render 'movies/timeline', followings: @followings %>
-      <% else %>
-        <h3>投稿一覧</h3>
-        <%= render 'movies/index', movies: @movies %>
-      <% end %>
+      <h3>投稿一覧</h3>
+      <%= render 'movies/index', movies: @movies %>
     </div>
 
     <div class="col-md-2">
@@ -19,4 +14,3 @@
     </div>
   </div>
 </div>
-
