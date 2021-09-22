@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  def show
+  def show #ユーザー詳細・タイムライン・検索
     @user = User.find(params[:id])
     @movies = @user.movies
     @followings = Movie.where(user_id: [*current_user.following_ids])
@@ -7,11 +7,28 @@ class UsersController < ApplicationController
     @good = Good.new
   end
 
-  def edit
+  def movies #ユーザー詳細・投稿一覧表示・検索
+    @user = User.find(params[:id])
+    @movies = @user.movies
+    @followings = Movie.where(user_id: [*current_user.following_ids])
+    @genres = Genre.all
+    @good = Good.new
+  end
+
+  def goods #ユーザー詳細・good一覧・検索
+    @user = User.find(params[:id])
+    goods = Good.where(user_id: @user.id).pluck(:movie_id)
+    @good_movies = Movie.find(goods)
+    @followings = Movie.where(user_id: [*current_user.following_ids])
+    @genres = Genre.all
+    @good = Good.new
+  end
+
+  def edit #ユーザー情報編集
     @user = User.find(params[:id])
   end
 
-  def update
+  def update #ユーザー情報編集
     @user = current_user
     if @user.update(user_params)
        redirect_to user_path(@user)
@@ -19,8 +36,6 @@ class UsersController < ApplicationController
        render :edit
     end
   end
-
-
 
   private
   def user_params

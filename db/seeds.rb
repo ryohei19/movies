@@ -6,12 +6,3 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-Movie.create!(
-                  name: "test1",
-                  rate: "3.5",
-                  review: "test1",
-                  spoiler: "test1",
-                  genre_id: "3",
-                  user_id: "1"
-                  )
