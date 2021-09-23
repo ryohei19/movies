@@ -12,12 +12,18 @@ class RelationshipsController < ApplicationController
   end
 
   def followings #フォロー一覧
-    user = User.find(params[:user_id])
-    @users = user.followings
+    @user = User.find(params[:user_id])
+    @users = @user.followings
+    @followings = Movie.where(user_id: [*current_user.following_ids])
+    @genres = Genre.all
+    @good = Good.new
   end
 
   def followers #フォロワー一覧
-    user = User.find(params[:user_id])
-    @users = user.followers
+    @user = User.find(params[:user_id])
+    @users = @user.followers
+    @followings = Movie.where(user_id: [*current_user.following_ids])
+    @genres = Genre.all
+    @good = Good.new
   end
 end
