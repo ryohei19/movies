@@ -1,17 +1,10 @@
 <div class="container my-5">
   <div class="row justify-content-between">
-    <div class="col-md-4">
-      <%= render 'users/userinfo', user: @user %>
+    <div class="col-md-2">
     </div>
 
     <div class="col-md-6">
-　　　<% if @user.id == current_user.id %>
-　　　  <h3>タイムライン</h3>
-        <%= render 'movies/timeline', followings: @followings %>
-      <% else %>
-        <h3>投稿一覧</h3>
-        <%= render 'movies/index', movies: @movies %>
-      <% end %>
+        <%= render 'users/userinfo', user: @user %>
     </div>
 
     <div class="col-md-2">
