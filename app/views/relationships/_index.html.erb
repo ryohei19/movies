@@ -1,0 +1,29 @@
+<% if users.exists? %>
+  <div class="row">
+    <% users.each do |user| %>
+      <div class="card" style="width: 100rem;">
+          <div class="row">
+            <div class="col-sm-2">
+              <%= attachment_image_tag user, :profile_image, size: "50x50", format: 'jpeg',fallback: "no_image.png", class:"image text-left" %>
+            </div>
+
+            <div class="col-sm-9">
+              <%= user.name %>さん
+
+              <% if current_user.following?(user) %>
+                <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, class:" btn btn-light my-1t" %>
+              <% else %>
+                <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class:"btn btn-outline-light my-1" %>
+              <% end %>
+            </div>
+
+          </div>
+
+          <%= user.introduction %>
+
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

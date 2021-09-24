@@ -11,19 +11,11 @@ class RelationshipsController < ApplicationController
     redirect_to request.referer #遷移元へ
   end
 
-  def followings #フォロー一覧
+  def index #フォロー・フォロワー一覧
     @user = User.find(params[:user_id])
-    @users = @user.followings
-    @followings = Movie.where(user_id: [*current_user.following_ids])
+    @followings = @user.followings
+    @followers = @user.followers
     @genres = Genre.all
-    @good = Good.new
   end
 
-  def followers #フォロワー一覧
-    @user = User.find(params[:user_id])
-    @users = @user.followers
-    @followings = Movie.where(user_id: [*current_user.following_ids])
-    @genres = Genre.all
-    @good = Good.new
-  end
 end

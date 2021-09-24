@@ -20,8 +20,7 @@ devise_for :users, controllers: {
 
   resources :users do
     resource :relationships, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
+      get 'index', to: 'relationships#index'
       member do
       get :movies
       get :goods
