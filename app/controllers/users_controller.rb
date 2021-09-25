@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   def edit #ユーザー情報編集
     @user = User.find(params[:id])
+    @genres = Genre.all
   end
 
   def update #ユーザー情報編集

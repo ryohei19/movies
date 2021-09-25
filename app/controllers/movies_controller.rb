@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   def new
     @movie = Movie.new
+    @genres = Genre.all
   end
 
   def create

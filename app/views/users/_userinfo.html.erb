@@ -1,9 +1,21 @@
 <div class="row">
+  <div class="col-1 mt-1">
+    <%= link_to "", :back, class:"fas fa-arrow-left" %>
+  </div>
+
+  <div class="col-11">
+    <h3>
+      <%= user.name %>
+    </h3>
+  </div>
+</div>
+
+<div class="row">
   <table class="table table-borderless">
 
     <tr class="brown-border">
       <td><%= attachment_image_tag user, :profile_image, size: "100x100", format: 'jpeg',fallback: "no_image.png", class:"image" %></td>
-      <td><%= user.name %></td>
+      <td><%= link_to "編集", edit_user_path(user.id), class:" btn btn-light my-1" %></td>
     </tr>
 
     <tr class="brown-border">
