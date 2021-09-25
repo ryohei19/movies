@@ -1,13 +1,13 @@
 <% if request.fullpath.include? "admin"  %>
-  <nav class="navbar navbar-expand-lg" >
+  <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
-        <li class="navbar-toggler-icon"></li>
+        <span class="navbar-toggler-icon"></span>
       </button>
 
       <%= link_to "Movies", admin_genres_path, class: "navbar-brand" %>
-      <ul class="navbar-nav ml-auto">
+      <ul class="nav flex-colum">
         <% if admin_signed_in? %>
           <li class="nav-item">
             <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link" %>
@@ -22,18 +22,17 @@
   </nav>
 
 <% else %>
-
-  <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <%= link_to "Movies", root_path, class:"navbar-brand" %>
-
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
-        <li class="navbar-toggler-icon"></li>
-      </button>
-
-      <div class="navbar-collapse collapse show" id="navbarNavDropdown">
-        <ul class = "navbar-nav ml-auto">
+        <h3><%= link_to "Movies", root_path, class:"navbar-brand" %></h3>
+        <ul class = "nav d-flex flex-column">
           <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "", user_timeline_path(current_user.id), class:"fas fa-search nav-link text-light" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "", user_timeline_path(current_user.id), class:"fas fa-home nav-link text-light" %>
+            </li>
+
             <li class="nav-item">
               <%= link_to "", user_path(current_user.id), class:" far fa-user nav-link text-light" %>
             </li>
@@ -43,7 +42,7 @@
             </li>
 
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link text-light" %>
+              <%= link_to "", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light" %>
             </li>
 
           <% else %>
@@ -61,7 +60,4 @@
 
           <% end %>
         </ul>
-      </div>
-    </div>
-  </nav>
 <% end %>

@@ -13,9 +13,25 @@
   </head>
 
   <body>
-    <header>
-      <%= render 'layouts/header' %>
-    </header>
-    <%= yield %>
+    <div class="container-fluid mt-5" >
+      <div class="row justify-content-center">
+        <div class="col-3 d-none d-lg-block"> <!--md（横幅992px）以上時のサイドバー-->
+          <%= render 'layouts/sidebar' %>
+        </div>
+
+        <div class="col-2 d-block d-lg-none"> <!--md（横幅992px）未満時のサイドバー-->
+          <%= render 'layouts/sidebar_min', genres: @genres %>
+        </div>
+
+        <%= yield %>
+
+        <div class="col-2 d-none d-lg-block"> <!--md（横幅992px）未満で削除（サイドバーからアクセス可能）-->
+          <%= render 'search/search', genres: @genres %>
+        </div>
+
+      </div>
+    </div>
+
+
   </body>
 </html>

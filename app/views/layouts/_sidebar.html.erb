@@ -1,0 +1,59 @@
+<% if request.fullpath.include? "admin"  %>
+  <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <%= link_to "Movies", admin_genres_path, class: "navbar-brand" %>
+      <ul class="nav flex-colum">
+        <% if admin_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
+<% else %>
+        <h3><%= link_to "Movies", root_path, class:"navbar-brand" %></h3>
+        <ul class = "nav d-flex flex-column">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "タイムライン", user_timeline_path(current_user.id), class:" far fa-user nav-link text-light" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "プロフィール", user_path(current_user.id), class:" far fa-user nav-link text-light" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "通知", notifications_path(current_user.id), class:" far fa-bell nav-link text-light" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link text-light" %>
+            </li>
+
+          <% else %>
+            <li class="nav-item">
+             <%= link_to "トップ",root_path, class:"fas nav-link text-light" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "アカウント作成", new_user_registration_path, class:"nav-link text-light" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "ログイン", new_user_session_path, class:"nav-link text-light" %>
+            </li>
+
+          <% end %>
+        </ul>
+<% end %>
