@@ -18,16 +18,13 @@ devise_for :users, controllers: {
   end
 
 
-  resources :users do
+  resources :users, only: [:show, :edit, :update] do
+    get 'timeline', to: 'users#timeline'
     resource :relationships, only: [:create, :destroy]
       get 'index', to: 'relationships#index'
-      member do
-      get :movies
-      get :goods
-    end
   end
 
-  resources :movies do
+  resources :movies, except: [:index, :edit, :update] do
     resources :goods, only: [:create, :destroy]
   end
 
