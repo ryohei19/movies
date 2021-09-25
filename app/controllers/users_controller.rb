@@ -2,11 +2,15 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @movies = @user.movies
-    @followings = Movie.where(user_id: [*current_user.following_ids])
     @genres = Genre.all
     @good = Good.new
     goods = Good.where(user_id: @user.id).pluck(:movie_id)
     @good_movies = Movie.find(goods)
+  end
+
+  def timeline
+    @followings = Movie.where(user_id: [*current_user.following_ids])
+    @genres = Genre.all
   end
 
   def edit #ユーザー情報編集
