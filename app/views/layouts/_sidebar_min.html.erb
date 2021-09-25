@@ -26,23 +26,27 @@
         <ul class = "nav d-flex flex-column">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "", user_timeline_path(current_user.id), class:"fas fa-search nav-link text-light" %>
+              <%= link_to "", user_timeline_path(current_user.id), class:"fas fa-search nav-link text-light" %> <!--検索-->
             </li>
 
             <li class="nav-item">
-              <%= link_to "", user_timeline_path(current_user.id), class:"fas fa-home nav-link text-light" %>
+              <%= link_to "", user_timeline_path(current_user.id), class:"fas fa-home nav-link text-light" %> <!--タイムライン-->
             </li>
 
             <li class="nav-item">
-              <%= link_to "", user_path(current_user.id), class:" far fa-user nav-link text-light" %>
+              <%= link_to "", user_path(current_user.id), class:"far fa-user nav-link text-light" %> <!--プロフィール-->
             </li>
 
             <li class="nav-item">
-              <%= link_to "", notifications_path(current_user.id), class:" far fa-bell nav-link text-light" %>
+              <%= link_to "", notifications_path(current_user.id), class:"far fa-bell nav-link text-light" %> <!--通知-->
             </li>
 
             <li class="nav-item">
-              <%= link_to "", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light" %>
+              <%= link_to "", new_movie_path(current_user.id), class:"fas fa-pencil-alt nav-link text-light" %> <!--新規投稿-->
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light" %> <!--ログアウト-->
             </li>
 
           <% else %>
