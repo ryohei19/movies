@@ -7,8 +7,13 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     @movie.user_id = current_user.id
-    @movie.save
-    redirect_to user_path(current_user)
+    if @movie.save
+      redirect_to user_path(current_user)
+    else
+      flash[:error] = "※がついている項目は必須です。"
+      @genres = Genre.all
+      render :new
+    end
   end
 
   def index

@@ -35,4 +35,9 @@ class Movie < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
+  validates :name,presence:true
+  validates :rate,presence:true
+  validates :genre_id,presence:true
+  validates :review,presence:true
 end
