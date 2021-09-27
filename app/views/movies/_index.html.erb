@@ -1,7 +1,13 @@
 <div class="row">
   <% movies.each do |movie| %>
     <div class="card" style="width: 100rem;">
-      <a href="/movies/<%= movie.id %>" class="card-body text-white">
+
+      <% if user_signed_in? %> <!--ログインしていない場合詳細ページには進めない-->
+        <a href="/movies/<%= movie.id %>" class="card-body text-white">
+      <% else %>
+        <a href="/users/sign_in" class="card-body text-white">
+      <% end %>
+
         <div class="row">
           <div class="col-sm-2">
             <%= attachment_image_tag movie.user, :profile_image, size: "50x50", format: 'jpeg',fallback: "no_image.png", class:"image text-left" %>
@@ -33,10 +39,11 @@
         <div class="col text-right mt-2">
           <%= movie.updated_at.strftime('%Y/%m/%d') %>
         </div>
-
-        <p class="col text-right border-top border-dark", id="good_buttons_<%= movie.id %>">
-          <%= render 'goods/good', movie: movie %>
-        </p>
+　　　　<% if user_signed_in? %> <!--ログインしていない場合はgoodできない-->
+          <p class="col text-right border-top border-dark", id="good_buttons_<%= movie.id %>">
+            <%= render 'goods/good', movie: movie %>
+          </p>
+        <% end %>
       </a>
     </div>
   <% end %>

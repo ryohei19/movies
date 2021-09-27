@@ -48,6 +48,10 @@
           <div class="col text-right mt-2">
             <%= movie.updated_at.strftime('%Y/%m/%d') %>
           </div>
+
+          <p class="col text-right border-top border-dark", id="good_buttons_<%= movie.id %>">
+            <%= render 'goods/good', movie: movie %>
+          </p>
         </a>
       </div>
     <% end %>
