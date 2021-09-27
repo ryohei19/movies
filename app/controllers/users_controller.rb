@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @movies = @user.movies
+    @movies = @user.movies.order(created_at: :desc) #ユーザーの投稿一覧（新しい順）
     @genres = Genre.all
     @good = Good.new
-    goods = Good.where(user_id: @user.id).pluck(:movie_id)
+    goods = Good.where(user_id: @user.id).pluck(:movie_id) #ユーザーがgoodした投稿一覧
     @good_movies = Movie.find(goods)
   end
 
   def timeline
-    @followings = Movie.where(user_id: [*current_user.following_ids])
+    @movies = Movie.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc) #フォローしているユーザーと自分の投稿を新しい銃で表示
+    @good = Good.new
     @genres = Genre.all
   end
 
