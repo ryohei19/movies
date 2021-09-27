@@ -1,5 +1,62 @@
 <div class="col-md-7">
-  <%= render 'movies/movie_show', movie: @movie, good: @good %>
+  <div class="row">
+    <div class="col-1 mt-1">
+      <%= link_to "", :back, class:"fas fa-arrow-left" %>
+    </div>
+
+    <div class="col-11">
+      <h3>
+        <%= @movie.name %>(<%= @movie.genre.name %>映画)の評価
+      </h3>
+    </div>
+  </div>
+
+  <div class="offset-1">
+    <div class="mt-3", id="star-rate-<%= @movie.id %>"></div>
+            <script>
+            $('#star-rate-<%= @movie.id %>').raty({
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= @movie.rate %>,
+            });
+            </script>
+  </div>
+
+  <p class="text-break offset-1 mt-2" style="width: 90%;">
+    <%= @movie.review %>
+  </p>
+
+  <div class="accordion col-md-12 mt-2" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="spoiler btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            以下ネタバレ含む
+          </button>
+        </h5>
+      </div>
+
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <p>
+            <%= @movie.spoiler %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col text-right mt-2">
+    <%= @movie.updated_at.strftime('%Y/%m/%d') %>
+  </div>
+
+  <p class="col text-right border-top border-dark", id="good_buttons_<%= @movie.id %>" >
+    <%= render 'goods/good', movie: @movie %>
+  </p>
 </div>
 
 <div class="col-2 d-none d-lg-block"> <!--md（横幅992px）未満で削除（サイドバーからアクセス可能）-->

@@ -33,14 +33,8 @@
           <%= movie.updated_at.strftime('%Y/%m/%d') %>
         </div>
 
-        <p class="col text-right border-top border-dark">
-          <% if current_user.already_good?(movie) %>
-            <%= link_to "", movie_good_path(movie), method: :delete, class:"link fas fa-thumbs-up" %>
-          <% else %>
-            <%= link_to "", movie_goods_path(movie), method: :post, class:"link far fa-thumbs-up" %>
-          <% end %>
-          <%= movie.goods.count %>
-          人がいいね
+        <p class="col text-right border-top border-dark", id="good_buttons_<%= movie.id %>">
+          <%= render 'goods/good', movie: movie %>
         </p>
       </a>
     </div>

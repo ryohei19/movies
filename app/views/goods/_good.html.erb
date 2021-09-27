@@ -1,0 +1,11 @@
+  <% if current_user.already_good?(movie) %>
+    <%= link_to movie_good_path(movie), method: :delete, remote: true do %>
+    <span class="link fas fa-thumbs-up"></span>
+    <% end %>
+  <% else %>
+    <%= link_to movie_goods_path(movie), method: :post, remote: true do %>
+    <span class="link far fa-thumbs-up"></span>
+    <% end %>
+  <% end %>
+  <%= movie.goods.count %>
+  人がいいね
