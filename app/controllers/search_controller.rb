@@ -1,5 +1,9 @@
 class SearchController < ApplicationController
 
+  def form #サイドバーから検索ページに遷移するため
+    @genres = Genre.all
+  end
+
   def search
     @user  = current_user
     @genres = Genre.all

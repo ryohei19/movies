@@ -1,8 +1,8 @@
 <div class="name-search">
   <% if user_signed_in? %>
-    <h5>検索</h5>
+    <h3>検索</h3>
     <%= form_with url: search_path, method: :get, local: true do |f| %>
-      <%= f.text_field 'search[value]', size: "26x4" %><br>
+      <%= f.text_field 'search[value]', size: "20x4", class: "mt-5" %><br>
       <span class="search-button col-xs-12 text-right">
         <%= f.select 'search[how]', options_for_select({ "部分一致" => "partical", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "match" }) %>
         <%= f.submit :"検索" %>

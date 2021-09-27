@@ -1,9 +1,5 @@
 <div class="col-7">
   <div class="row">
-    <div class="col-1 mt-1">
-      <%= link_to "", user_path(@user), class:"fas fa-arrow-left" %>
-    </div>
-
     <div class="col-11">
       <h3>
         検索結果
@@ -13,7 +9,7 @@
   <% if @datas.empty? %>
     <h4>該当する映画はありません</h4>
   <% else %>
-  <div class="row">
+  <div class="row mt-5">
     <% @datas.each do |movie| %>
       <div class="card" style="width: 100rem;">
         <a href="/movies/<%= movie.id %>" class="card-body text-white">

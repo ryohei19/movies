@@ -22,46 +22,46 @@
   </nav>
 
 <% else %>
-        <h3><%= link_to "Movies", root_path, class:"navbar-brand" %></h3>
-        <ul class = "nav d-flex flex-column">
-          <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "", user_timeline_path(current_user.id), class:"fas fa-search nav-link text-light" %> <!--検索-->
-            </li>
+  <h3><%= link_to "Movies", root_path, class:"brand link" %></h3>
+  <ul class = "nav mt-5 d-flex flex-column">
+    <% if user_signed_in? %>
+      <li class="sidebar-min-item">
+        <%= link_to "", form_path(current_user.id), class:"fas fa-search nav-link" %> <!--検索-->
+      </li>
 
-            <li class="nav-item">
-              <%= link_to "", user_timeline_path(current_user.id), class:"fas fa-home nav-link text-light" %> <!--タイムライン-->
-            </li>
+      <li class="sidebar-min-item">
+        <%= link_to "", user_timeline_path(current_user.id), class:"fas fa-home nav-link text-light" %> <!--タイムライン-->
+      </li>
 
-            <li class="nav-item">
-              <%= link_to "", user_path(current_user.id), class:"far fa-user nav-link text-light" %> <!--プロフィール-->
-            </li>
+      <li class="sidebar-min-item">
+        <%= link_to "", user_path(current_user.id), class:"far fa-user nav-link text-light" %> <!--プロフィール-->
+      </li>
 
-            <li class="nav-item">
-              <%= link_to "", notifications_path(current_user.id), class:"far fa-bell nav-link text-light" %> <!--通知-->
-            </li>
+      <li class="sidebar-min-item">
+        <%= link_to "", notifications_path(current_user.id), class:"far fa-bell nav-link text-light" %> <!--通知-->
+      </li>
 
-            <li class="nav-item">
-              <%= link_to "", new_movie_path(current_user.id), class:"fas fa-pencil-alt nav-link text-light" %> <!--新規投稿-->
-            </li>
+      <li class="sidebar-min-item">
+        <%= link_to "", new_movie_path(current_user.id), class:"fas fa-pencil-alt nav-link text-light" %> <!--新規投稿-->
+      </li>
 
-            <li class="nav-item">
-              <%= link_to "", destroy_user_session_path, method: :delete, data: {confirm: "本当ログアウトしますか？"}, class:"fas fa-sign-out-alt nav-link text-light" %> <!--ログアウト-->
-            </li>
+      <li class="sidebar-min-item">
+        <%= link_to "", destroy_user_session_path, method: :delete, data: {confirm: "本当ログアウトしますか？"}, class:"fas fa-sign-out-alt nav-link text-light" %> <!--ログアウト-->
+      </li>
 
-          <% else %>
-            <li class="nav-item">
-             <%= link_to "トップ",root_path, class:"fas nav-link text-light" %>
-            </li>
+    <% else %>
+      <li class="nav-item">
+       <%= link_to "トップ",root_path, class:"fas nav-link text-light" %>
+      </li>
 
-            <li class="nav-item">
-              <%= link_to "アカウント作成", new_user_registration_path, class:"nav-link text-light" %>
-            </li>
+      <li class="nav-item">
+        <%= link_to "", new_user_registration_path, class:"nav-link fas fa-user-plus" %>
+      </li>
 
-            <li class="nav-item">
-              <%= link_to "ログイン", new_user_session_path, class:"nav-link text-light" %>
-            </li>
+      <li class="nav-item">
+        <%= link_to "", new_user_session_path, class:"nav-link fas fa-sign-in-alt" %>
+      </li>
 
-          <% end %>
-        </ul>
+    <% end %>
+  </ul>
 <% end %>

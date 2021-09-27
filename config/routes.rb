@@ -32,5 +32,6 @@ devise_for :users, controllers: {
 
   root 'homes#top'
   get 'search', to: 'search#search'
+  get 'form', to: 'search#form'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

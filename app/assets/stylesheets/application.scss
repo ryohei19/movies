@@ -66,5 +66,21 @@ a:hover {
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
-  max-width: 992px; //md（横幅992px）未満で画面幅いっぱいになる
+  max-width: 1000px; //md（横幅992px）未満で画面幅いっぱいになる
+}
+
+.sidebar-min-item {
+  font-size: 20px;
+  height: 70px;
+  text-align: center;
+}
+
+.sidebar-item {
+  font-size: 20px;
+  height: 70px;
+  text-align: left;
+}
+
+.nav-link:hover {
+  color: yellow;
 }
