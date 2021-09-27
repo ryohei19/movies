@@ -10,9 +10,10 @@ class MoviesController < ApplicationController
     if @movie.save
       redirect_to user_path(current_user)
     else
-      flash[:error] = "※がついている項目は必須です。"
       @genres = Genre.all
-      render :new
+      redirect_to new_movie_path, alert: "※がついている項目は必須です。"
+      
+      
     end
   end
 
