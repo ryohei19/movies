@@ -46,7 +46,7 @@
             </li>
 
             <li class="nav-item">
-              <%= link_to "", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light" %> <!--ログアウト-->
+              <%= link_to "", destroy_user_session_path, method: :delete, data: {confirm: "本当ログアウトしますか？"}, class:"fas fa-sign-out-alt nav-link text-light" %> <!--ログアウト-->
             </li>
 
           <% else %>
