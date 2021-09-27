@@ -57,7 +57,14 @@
   <p class="col text-right border-top border-dark", id="good_buttons_<%= @movie.id %>" >
     <%= render 'goods/good', movie: @movie %>
   </p>
+
+<div class="text-right mt-2">
+  <% if @movie.user_id == current_user.id %>
+    <%= link_to "削除", movie_path(@movie), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-sm btn-light" %>
+  <% end %>
 </div>
+</div>
+
 
 <div class="col-2 d-none d-lg-block"> <!--md（横幅992px）未満で削除（サイドバーからアクセス可能）-->
   <%= render 'search/search', genres: @genres %>

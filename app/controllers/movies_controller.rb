@@ -16,15 +16,18 @@ class MoviesController < ApplicationController
     end
   end
 
-  def index
-  end
-
   def show
     @movie = Movie.find(params[:id])
     @user = @movie.user
     @movies = @user.movies
     @good = Good.new
     @genres = Genre.all
+  end
+
+  def destroy
+    @movie = Movie.find(params[:id])
+    @movie.destroy
+    redirect_to user_path(current_user)
   end
 
 
