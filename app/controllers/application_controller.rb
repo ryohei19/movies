@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_genres_path
     when User
-      user_path(resource.id)
+      user_timeline_path(resource.id)
     end
   end
 end
