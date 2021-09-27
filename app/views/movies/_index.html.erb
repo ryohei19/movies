@@ -14,6 +14,7 @@
 
             <div class="mt-1", id="star-rate-<%= movie.id %>"></div>
               <script>
+              $('#star-rate-<%= movie.id %>').empty();
               $('#star-rate-<%= movie.id %>').raty({
                 size: 36,
                 starOff:  '<%= asset_path('star-off.png') %>',
