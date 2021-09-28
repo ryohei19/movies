@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @movie = Movie.new
     @genres = Genre.all
@@ -12,8 +14,6 @@ class MoviesController < ApplicationController
     else
       @genres = Genre.all
       redirect_to new_movie_path, alert: "※がついている項目は必須です。"
-      
-      
     end
   end
 

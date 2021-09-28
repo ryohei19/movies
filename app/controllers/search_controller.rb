@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  before_action :authenticate_user!
 
   def form #サイドバーから検索ページに遷移するため
     @genres = Genre.all

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @user = User.find(params[:id])
     @movies = @user.movies.order(created_at: :desc) #ユーザーの投稿一覧（新しい順）

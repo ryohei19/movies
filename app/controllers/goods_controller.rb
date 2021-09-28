@@ -1,4 +1,6 @@
 class GoodsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @good = current_user.goods.create(movie_id: params[:movie_id])
     @movie = Movie.find(params[:movie_id])
