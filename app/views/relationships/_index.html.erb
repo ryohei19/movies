@@ -2,29 +2,32 @@
   <div class="row">
     <% users.each do |user| %>
       <div class="card" style="width: 100rem;">
-          <div class="row">
-            <div class="col-sm-2">
-              <%= attachment_image_tag user, :profile_image, size: "50x50", format: 'jpeg',fallback: "no_image.png", class:"image text-left" %>
-            </div>
-
-            <div class="col-sm-9">
-              <%= user.name %>さん
-              <% unless user.id == current_user.id %>
-                <% if current_user.following?(user) %>
-                  <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, class:" btn btn-light my-1t" %>
-                <% else %>
-                  <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class:"btn btn-outline-light my-1" %>
-                <% end %>
-              <% end %>
-            </div>
-
+        <div class="row">
+          <div class="image col-3">
+            <%= attachment_image_tag user, :profile_image, size: "50x50", format: 'jpeg',fallback: "no_image.png", class:"image text-left" %>
           </div>
 
-          <%= user.introduction %>
+          <div class="name col-6">
+            <%= user.name %>さん
+          </div>
 
+          <div class="btn col-3">
+            <% unless user.id == current_user.id %> <!--ログインユーザーが自分のことをフォローできないようにボタンを非表示にする-->
+              <% if current_user.following?(user) %>
+                <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, class:"btn btn-light" %>
+              <% else %>
+                <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class:"btn btn-outline-light" %>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="introduction col-8 ofsset-3">
+            <%= user.introduction %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
 <% else %>
-  <p>ユーザーはいません</p>
+  <div class="none mt-5">ユーザーはいません</div>
 <% end %>

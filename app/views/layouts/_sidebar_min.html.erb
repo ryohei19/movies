@@ -1,27 +1,20 @@
 <% if request.fullpath.include? "admin"  %>
-  <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <ul class="nav flex-colum">
+    <h3>Movies</h3>
+    <% if admin_signed_in? %>
+      <li class="nav-item mt-5">
+        <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link" %>
+      </li>
 
-      <%= link_to "Movies", admin_genres_path, class: "navbar-brand" %>
-      <ul class="nav flex-colum">
-        <% if admin_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link" %>
-          </li>
-
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
+      <li class="nav-item">
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+      </li>
+    <% end %>
+  </ul>
 
 <% else %>
+
   <h3><%= link_to "Movies", root_path, class:"brand link" %></h3>
   <ul class = "nav mt-5 d-flex flex-column">
     <% if user_signed_in? %>

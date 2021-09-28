@@ -1,3 +1,24 @@
 // Place all the styles related to the Relationships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.image {
+  position: relative;
+  left: 10px;
+}
+
+.name {
+  position: relative;
+  right: 50px;
+}
+
+.introduction {
+  position: relative;
+  left: 105px;
+}
+
+
+.btn {
+  position: absolute;
+  right: 10px;
+}
