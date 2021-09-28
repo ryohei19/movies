@@ -22,11 +22,11 @@
 // 追加
 require ('javascripts/jquery_raty')
 
-          $('#star').raty({
-            size     : 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            scoreName: 'movie[rate]',
-            half: true,
-          });
+      // $('#star').raty({
+      //   size     : 36,
+      //   starOff:  '<%= asset_path('star-off.png') %>',
+      //   starOn : '<%= asset_path('star-on.png') %>',
+      //   starHalf: '<%= asset_path('star-half.png') %>',
+      //   scoreName: 'movie[rate]',
+      //   half: true,
+      // });
