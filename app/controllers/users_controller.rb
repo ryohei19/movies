@@ -24,7 +24,8 @@ class UsersController < ApplicationController
     if @user.update(user_params)
        redirect_to user_path(@user)
     else
-       render :edit
+       @genres = Genre.all
+       redirect_to edit_user_path, alert: "名前は必須です。"
     end
   end
 
