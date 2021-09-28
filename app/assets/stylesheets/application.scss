@@ -63,6 +63,12 @@ a:hover {
   border-radius: 50%;
 }
 
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 992px; //md（横幅992px）未満で画面幅いっぱいになる
+}
+
 .sidebar-min-item {
   font-size: 20px;
   height: 70px;
