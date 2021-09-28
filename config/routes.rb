@@ -7,10 +7,9 @@ devise_for :users, controllers: {
   }
 
 
-  devise_for :admin, controllers: {
+  devise_for :admin, skip: [:registrations], controllers: {
     sessions: 'admin/sessions',
     passwords: 'admin/passwords',
-    registrations: 'admin/registrations'
   }
 
   namespace :admin do
