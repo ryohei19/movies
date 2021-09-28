@@ -1,34 +1,32 @@
 <div class="row mt-3">
   <table class="table table-borderless">
 
-    <tr class="brown-border">
+    <tr>
       <td><%= attachment_image_tag user, :profile_image, size: "100x100", format: 'jpeg',fallback: "no_image.png", class:"image" %></td>
       <td>
         <% if user.id == current_user.id %>
-          <%= link_to "プロフィールを編集", edit_user_path(user.id), class:" btn btn-light my-1" %>
+          <%= link_to "プロフィールを編集", edit_user_path(user.id), class:"user_aaction btn btn-light my-1" %>
         <% else %>
           <% if current_user.following?(user) %>
-            <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, class:" btn btn-light my-1" %>
+            <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, class:"user_aaction btn btn-light my-1" %>
           <% else %>
-            <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class:"btn btn-outline-light my-1" %>
+            <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class:"user_aaction btn btn-outline-light my-1" %>
           <% end %>
         <% end %>
-
-
       </td>
     </tr>
 
-    <tr class="brown-border">
+    <tr>
       <td>自己紹介</td>
       <td><%= user.introduction %></td>
     </tr>
 
-    <tr class="brown-border">
-      <td>お気に入りの映画</td>
+    <tr>
+      <td>好きな映画</td>
       <td><%= user.favorite_movie %></td>
     </tr>
 
-    <tr class="brown-border">
+    <tr>
       <td><%= link_to user.followings.count, user_index_path(user.id), class:"link" %>フォロー</td>
 
       <td><%= link_to user.followers.count, user_index_path(user.id), class:"link" %>フォロワー</td>
@@ -39,10 +37,10 @@
 
 <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">reviews</a>
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">投稿一覧</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">goods</a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">GOODS</a>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">

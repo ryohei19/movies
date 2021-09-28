@@ -1,8 +1,9 @@
+<!--タイムライン・ユーザー詳細・TOPで使用-->
 <div class="row mt-5">
   <% movies.each do |movie| %>
     <div class="card" style="width: 100rem;">
 
-      <% if user_signed_in? %> <!--ログインしていない場合詳細ページには進めない-->
+      <% if user_signed_in? %> <!--TOPでログインしていないuserがクリックした場合ログインページへ遷移-->
         <a href="/movies/<%= movie.id %>" class="card-body text-white">
       <% else %>
         <a href="/users/sign_in" class="card-body text-white">
