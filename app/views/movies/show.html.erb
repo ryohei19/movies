@@ -47,7 +47,11 @@
 
   <details class="text-break offset-1 mt-3" style="width: 90%;">
     <summary>以下ネタバレ</summary>
-    <p><%= @movie.spoiler %></p>
+    <% if @movie.spoiler.empty? %>
+      <div class="none">ネタバレはございません。</div>
+    <% else %>
+      <p><%= @movie.spoiler %></p>
+    <% end %>
   </details>
 
 

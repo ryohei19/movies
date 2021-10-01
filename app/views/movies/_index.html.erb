@@ -10,13 +10,15 @@
       <% end %>
 
         <div class="row">
-          <div class="col-sm-2">
+          <div class="col-2">
             <%= attachment_image_tag movie.user, :profile_image, size: "50x50", format: 'jpeg',fallback: "no_image.png", class:"image text-left" %>
           </div>
 
-          <div class="col-sm-10">
+          <div class="col-10">
             <%= movie.user.name %>さん</br>
+          </div>
 
+          <div class="review col-10 offset-2">
             <%= movie.name %>の評価
 
             <div class="mt-1", id="star-rate-<%= movie.id %>"></div>
@@ -37,7 +39,7 @@
           </div>
         </div>
 
-        <div class="col text-right mt-2">
+        <div class="col text-right">
           <%= movie.updated_at.strftime('%Y/%m/%d') %>
         </div>
 　　　　<% if user_signed_in? %> <!--ログインしていない場合はgoodできない-->
