@@ -1,27 +1,28 @@
-<div class="name-search">
-  <% if user_signed_in? %>
-    <h3>検索</h3>
-    <%= form_with url: search_path, method: :get, local: true do |f| %>
-      <%= f.text_field 'search[value]', size: "20x4", class: "mt-5" %><br>
-      <span class="search-button col-xs-12 text-right">
-        <%= f.select 'search[how]', options_for_select({ "部分一致" => "partical", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "match" }) %>
-        <%= f.submit :"検索" %>
-      </span>
+<div class="sticky-top">
+  <div class="name-search">
+    <% if user_signed_in? %>
+      <h3>検索</h3>
+      <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <%= f.text_field 'search[value]', size: "20x4", class: "mt-5" %><br>
+        <span class="search-button col-xs-12 text-right">
+          <%= f.select 'search[how]', options_for_select({ "部分一致" => "partical", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "match" }) %>
+          <%= f.submit :"検索" %>
+        </span>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
-<table class="table table-borderless table-hover mt-5">
-  <thead>
-    <th>ジャンル</th>
-  </thead>
-  <tbody>
-      <% genres.each do |genre| %>
-    <tr>
-      <td>
-        <%= link_to genre.name, search_path('search[value]': genre.id, 'search[how]': "match"), class:"link" %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+  <h3 class="mt-5">ジャンル</h3>
+
+  <table class="table table-borderless table-hover mt-4">
+    <tbody>
+        <% genres.each do |genre| %>
+      <tr>
+        <td>
+          <%= link_to genre.name, search_path('search[value]': genre.id, 'search[how]': "match"), class:"link" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
