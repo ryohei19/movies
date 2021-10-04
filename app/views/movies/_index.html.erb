@@ -3,28 +3,26 @@
   <% movies.each do |movie| %>
     <div class="card" style="width: 100rem;">
 
-      <% if user_signed_in? %> <!--TOPでログインしていないuserがクリックした場合ログインページへ遷移-->
-        <a href="/movies/<%= movie.id %>" class="card-body text-white">
-      <% else %>
-        <a href="/users/sign_in" class="card-body text-white">
-      <% end %>
+    <% if user_signed_in? %> <!--TOPでログインしていないuserがクリックした場合ログインページへ遷移-->
+      <a href="/movies/<%= movie.id %>" class="card-body text-white">
+    <% else %>
+      <a href="/users/sign_in" class="card-body text-white">
+    <% end %>
 
         <div class="row">
-          <div class="col-2">
+          <div class="col-sm-2">
             <%= attachment_image_tag movie.user, :profile_image, size: "50x50", format: 'jpeg',fallback: "no_image.png", class:"image text-left" %>
           </div>
 
-          <div class="col-10">
+          <div class="col-sm-10">
             <%= movie.user.name %>さん</br>
-          </div>
 
-          <div class="review col-10 offset-2">
             <%= movie.name %>の評価
 
-            <div class="mt-1", id="star-rate-<%= movie.id %>"></div>
+            <div class="mt-1", id="star1-rate-<%= movie.id %>"></div>
               <script>
-              $('#star-rate-<%= movie.id %>').empty();
-              $('#star-rate-<%= movie.id %>').raty({
+              $('#star1-rate-<%= movie.id %>').empty();
+              $('#star1-rate-<%= movie.id %>').raty({
                 size: 36,
                 starOff:  '<%= asset_path('star-off.png') %>',
                 starOn : '<%= asset_path('star-on.png') %>',
@@ -39,14 +37,14 @@
           </div>
         </div>
 
-        <div class="col text-right">
+        <div class="col text-right mt-2">
           <%= movie.updated_at.strftime('%Y/%m/%d') %>
         </div>
-　　　　<% if user_signed_in? %> <!--ログインしていない場合はgoodできない-->
-          <p class="col text-right border-top border-dark", id="good_buttons_<%= movie.id %>">
-            <%= render 'goods/good', movie: movie %>
-          </p>
-        <% end %>
+
+        <p class="col text-right border-top border-dark", id="good_buttons_<%= movie.id %>">
+          <%= render 'goods/good', movie: movie %>
+        </p>
+
       </a>
     </div>
   <% end %>

@@ -1,3 +1,5 @@
+<% if user_signed_in? %><!--ユーザーがログインしていないTOPではgoodが表示されない-->
+
   <% if current_user.already_good?(movie) %>
     <%= link_to movie_good_path(movie,current_user.goods.find_by(movie_id: movie.id).id), method: :delete, remote: true do %>
       <span class="link fas fa-thumbs-up"></span>
@@ -9,3 +11,5 @@
   <% end %>
   <%= movie.goods.count %>
   人がいいね
+
+<% end %>
