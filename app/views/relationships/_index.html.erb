@@ -9,7 +9,7 @@
             <% end %>
           </div>
 
-          <div class="col-7">
+          <div class="col-6">
             <%= link_to user_path(user), class:"link" do %>
               <%= user.name %>さん</br>
             <% end %>
@@ -17,7 +17,7 @@
             <%= user.introduction %>
           </div>
 
-          <div class="col text-right">
+          <div class="col text-right mt-1">
             <% unless user.id == current_user.id %> <!--ログインユーザーが自分のことをフォローできないようにボタンを非表示にする-->
               <% if current_user.following?(user) %>
                 <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, class:"relationship_action btn btn-light" %>
