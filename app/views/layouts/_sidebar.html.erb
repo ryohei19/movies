@@ -29,6 +29,10 @@
 
       <li class="sidebar-item">
         <%= link_to "　通知", notifications_path(current_user.id), class:"nav-link far fa-bell" %> <!--通知-->
+        <% if unchecked_notifications.any? %>
+          <i class="circle fa fa-circle"></i>
+        <% end %>
+
       </li>
 
       <li class="sidebar-item">
