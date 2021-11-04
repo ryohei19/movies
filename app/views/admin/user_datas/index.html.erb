@@ -1,0 +1,32 @@
+<div class="container my-5">
+  <div class="row">
+    <h2>ユーザー一覧</h2>
+  </div>
+
+  <div class="row mt-1">
+    <table class="table table-hover text-center">
+      <thead>
+        <tr>
+          <th>アイコン</th>
+          <th>名前</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= attachment_image_tag user, :profile_image, size: "100x100", format: 'jpeg',fallback: "no_image.png", class:"image" %></td>
+            <td><%= user.name %></td>
+            <td><% if user.user_status == true %>
+                有効
+                <% else %>
+                退会
+                <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
