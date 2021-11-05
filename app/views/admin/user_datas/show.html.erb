@@ -1,0 +1,57 @@
+<div class="col-7">
+  <div class="row mt-3">
+    <table class="table table-borderless">
+
+      <tr>
+        <td><%= attachment_image_tag @user, :profile_image, size: "100x100", format: 'jpeg',fallback: "no_image.png", class:"image" %></td>
+      </tr>
+
+      <tr>
+        <td>自己紹介</td>
+        <td><%= @user.introduction %></td>
+      </tr>
+
+      <tr>
+        <td>好きな映画</td>
+        <td><%= @user.favorite_movie %></td>
+      </tr>
+
+      <tr>
+        <td><%= @user.followings.count %>フォロー</td>
+
+        <td><%= @user.followers.count %>フォロワー</td>
+      </tr>
+
+      <tr>
+        <td>ユーザーステータス</td>
+        <td>
+          <% if @user.user_status == true %>
+            有効
+          <% else %>
+            停止
+          <% end %>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+
+  <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">投稿一覧</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">GOODS</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <%= render 'movies/index', movies: @movies %>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <%= render 'movies/good_movies', good_movies: @good_movies %>
+    </div>
+  </div>
+</div>
+
+<div class="col-2"></div>

@@ -14,7 +14,7 @@ devise_for :users, controllers: {
 
   namespace :admin do
     resources :genres, except: [:new, :show]
-    resources :user_datas, only: [:index]
+    resources :user_datas, only: [:index, :show]
   end
 
 
@@ -28,7 +28,7 @@ devise_for :users, controllers: {
     resources :goods, only: [:create, :destroy]
   end
 
-  resources :notifications, only: :index
+  resources :notifications, only: [:index]
 
   root 'homes#top'
   get 'search', to: 'search#search'
