@@ -25,10 +25,10 @@
       <tr>
         <td>ユーザーステータス</td>
         <td>
-          <% if @user.user_status == true %>
-            有効
+          <% if @user.user_status %>
+            <%= link_to '有効', admin_user_data_path(@user.id, user: {user_status: false}), method: :put %>
           <% else %>
-            停止
+            <%= link_to '停止中', admin_user_data_path(@user.id, user: {user_status: true}), method: :put %>
           <% end %>
         </td>
       </tr>

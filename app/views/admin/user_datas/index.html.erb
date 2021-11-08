@@ -22,12 +22,7 @@
               <%= user.name %>
               <% end %>
             </td>
-            <td><% if user.user_status == true %>
-                有効
-                <% else %>
-                停止
-                <% end %>
-            </td>
+            <td><%= user.user_status ? '有効' : '停止中' %></td>
           </tr>
         <% end %>
       </tbody>

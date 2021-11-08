@@ -14,6 +14,12 @@ class Admin::UserDatasController < ApplicationController
     @good_movies = Movie.find(goods)
   end
 
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to admin_user_data_path(@user)
+  end
+
 
   private
   def user_params

@@ -14,7 +14,7 @@ devise_for :users, controllers: {
 
   namespace :admin do
     resources :genres, except: [:new, :show]
-    resources :user_datas, only: [:index, :show]
+    resources :user_datas, only: [:index, :show, :update]
   end
 
 
