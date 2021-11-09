@@ -8,6 +8,10 @@
       </li>
 
       <li class="sidebar-item">
+        <%= link_to "ユーザー一覧", admin_user_datas_path, class: "nav-link" %>
+      </li>
+
+      <li class="sidebar-item">
         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
       </li>
     <% end %>

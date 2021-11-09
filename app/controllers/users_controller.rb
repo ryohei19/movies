@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def timeline
-    @movies = Movie.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc) #フォローしているユーザーと自分の投稿を新しい銃で表示
+    @movies = Movie.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc) #フォローしているユーザーと自分の投稿を新しい順で表示
     @good = Good.new
     @genres = Genre.all
   end

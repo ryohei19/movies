@@ -26,9 +26,9 @@
         <td>ユーザーステータス</td>
         <td>
           <% if @user.user_status %>
-            <%= link_to '有効', admin_user_data_path(@user.id, user: {user_status: false}), method: :put %>
+            <%= link_to '有効', admin_user_data_path(@user.id, user: {user_status: false}), method: :put, data: {confirm: "アカウントを停止させますか？"}, class:"btn btn-sm btn-light" %>
           <% else %>
-            <%= link_to '停止中', admin_user_data_path(@user.id, user: {user_status: true}), method: :put %>
+            <%= link_to '停止中', admin_user_data_path(@user.id, user: {user_status: true}), method: :put, data: {confirm: "アカウントを有効にしますか？"}, class:"btn btn-sm btn-light" %>
           <% end %>
         </td>
       </tr>
