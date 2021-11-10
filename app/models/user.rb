@@ -50,6 +50,11 @@ class User < ApplicationRecord
     end
   end
 
+  def active?
+    user_status == true
+  end
+
   validates :name,presence:true
+
 
 end

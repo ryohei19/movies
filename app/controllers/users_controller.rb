@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_login
   before_action :authenticate_user!
 
   def show
@@ -29,6 +30,10 @@ class UsersController < ApplicationController
        @genres = Genre.all
        redirect_to edit_user_path, alert: "名前は必須です。"
     end
+  end
+
+  def check_login
+    redirect_to destroy_user_session_path if current_user && current_user.user_status != 'active'
   end
 
   private
