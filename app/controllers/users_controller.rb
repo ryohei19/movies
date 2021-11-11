@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def check_login
-    redirect_to destroy_user_session_path if current_user && current_user.user_status != 'active'
+    redirect_to logout_path if current_user && current_user.user_status != 'active'
   end
 
   private

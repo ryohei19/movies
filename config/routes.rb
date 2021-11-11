@@ -6,6 +6,11 @@ devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
 
+devise_scope :user do
+  get '/logout', to: 'devise/sessions#destroy', as: :logout
+end
+
+
 
   devise_for :admin, skip: [:registrations], controllers: {
     sessions: 'admin/sessions',
